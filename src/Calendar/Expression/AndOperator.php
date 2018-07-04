@@ -2,33 +2,44 @@
 
 namespace Calendar\Expression;
 
+use BadMethodCallException;
 use DateTime;
 
 final class AndOperator implements ExpressionInterface
 {
-    /** @var ExpressionInterface */
-    protected $expressions1;
+    /** @var ExpressionInterface[]|array */
+    protected $expressions = [];
 
-    /** @var ExpressionInterface */
-    protected $expressions2;
-
-    public function __construct(ExpressionInterface $expressions1, ExpressionInterface $expressions2)
+    public function __construct()
     {
-        $this->expressions1 = $expressions1;
-        $this->expressions2 = $expressions2;
+        foreach(func_get_args() as $arg) {
+            if(!$arg instanceof ExpressionInterface) {
+                throw new BadMethodCallException("Must be ExpressionInterface implemented class!");
+            }
+
+            $this->expressions[] = $arg;
+        }
     }
 
     public function isMatching(DateTime $date): bool
     {
-        return $this->expressions1->isMatching($date) && $this->expressions2->isMatching($date);
+        /** @var ExpressionInterface $expression */
+        foreach($this->expressions as $expression) {
+            if(!$expression->isMatching($date)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public function __toString(): string
     {
-        return sprintf("%s AND %s",
-            $this->expressions1->__tostring(),
-            $this->expressions2->__tostring()
-        );
+        return implode("&", array_map("strval", $this->expressions));
     }
 
+    public static function fromString(string $expression): ExpressionInterface
+    {
+        return Parser::parse($expression);
+    }
 }

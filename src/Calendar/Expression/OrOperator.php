@@ -5,7 +5,7 @@ namespace Calendar\Expression;
 use BadMethodCallException;
 use DateTime;
 
-final class AllOperator implements ExpressionInterface
+final class OrOperator implements ExpressionInterface
 {
     /** @var ExpressionInterface[]|array */
     protected $expressions = [];
@@ -25,17 +25,21 @@ final class AllOperator implements ExpressionInterface
     {
         /** @var ExpressionInterface $expression */
         foreach($this->expressions as $expression) {
-            if(!$expression->isMatching($date)) {
-                return false;
+            if($expression->isMatching($date)) {
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     public function __toString(): string
     {
-        return implode(",", array_map("strval", $this->expressions));
+        return implode("|", array_map("strval", $this->expressions));
     }
 
+    public static function fromString(string $expression): ExpressionInterface
+    {
+        return Parser::parse($expression);
+    }
 }

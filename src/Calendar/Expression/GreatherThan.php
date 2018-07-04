@@ -23,4 +23,14 @@ final class GreatherThan implements ExpressionInterface
     {
         return sprintf("greather than %s", $this->date->format("Y-m-d H:i:s"));
     }
+
+    public static function fromString(string $expression): ExpressionInterface
+    {
+        if(preg_match("@^(greather than \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})$@", $expression))
+        {
+            $expression = substr($expression, 14);
+        }
+
+        return new self(new DateTime($expression));
+    }
 }

@@ -3,6 +3,7 @@
 namespace Calendar\Expression;
 
 use DateTime;
+use Webmozart\Assert\Assert;
 
 final class DayOfWeek implements ExpressionInterface
 {
@@ -88,5 +89,12 @@ final class DayOfWeek implements ExpressionInterface
     public function __toString(): string
     {
         return array_flip(self::$days)[$this->dayOfWeek];
+    }
+
+    public static function fromString(string $expression): ExpressionInterface
+    {
+        Assert::keyExists(self::$days, $expression);
+
+        return new self(self::$days[$expression]);
     }
 }

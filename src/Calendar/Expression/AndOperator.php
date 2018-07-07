@@ -21,7 +21,7 @@ final class AndOperator implements ExpressionInterface
 
     public function isMatching(DateTime $date): bool
     {
-        return $this->expression1 && $this->expression2;
+        return $this->expression1->isMatching($date) && $this->expression2->isMatching($date);
     }
 
     public function __toString(): string

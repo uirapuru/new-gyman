@@ -14,21 +14,21 @@ class AndOperatorTest extends TestCase
 
     public function testToString()
     {
-        $expression = new AndOperator(DayOfWeek::monday(), DayOfWeek::wednesday(), DayOfWeek::friday());
+        $expression = new AndOperator(DayOfWeek::monday(), DayOfWeek::wednesday());
 
-        $this->assertEquals("monday&&wednesday&&friday", (string) $expression);
+        $this->assertEquals("(monday and wednesday)", (string) $expression);
     }
 
     public function testIsMatchingOne()
     {
-        $expression = new AndOperator(DayOfWeek::tuesday());
+        $expression = new AndOperator(DayOfWeek::tuesday(), DayOfWeek::tuesday());
 
         $this->assertTrue($expression->isMatching(new DateTime("tuesday")));
     }
 
     public function testIsMatchingAll()
     {
-        $expression = new AndOperator(DayOfWeek::tuesday(), DayOfWeek::tuesday(), DayOfWeek::tuesday());
+        $expression = new AndOperator(DayOfWeek::tuesday(), DayOfWeek::tuesday());
 
         $this->assertTrue($expression->isMatching(new DateTime("tuesday")));
     }
@@ -37,8 +37,7 @@ class AndOperatorTest extends TestCase
     {
         $expression = new AndOperator(
             new DayOfWeek((int) (new DateTime("yesterday"))->format("w")),
-            new DayOfWeek((int) (new DateTime("today"))->format("w")),
-            new DayOfWeek((int) (new DateTime("tomorrow"))->format("w"))
+            new DayOfWeek((int) (new DateTime("today"))->format("w"))
         );
 
         $this->assertFalse($expression->isMatching(new DateTime("today")));

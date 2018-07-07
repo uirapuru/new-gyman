@@ -107,6 +107,9 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "jakubledl/dissect": {
+        "version": "v1.0.1"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },

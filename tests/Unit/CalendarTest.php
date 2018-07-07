@@ -7,8 +7,8 @@ use Calendar\Event;
 use Calendar\Event\TimeSpan;
 use Calendar\Expression\AndOperator;
 use Calendar\Expression\DayOfWeek;
-use Calendar\Expression\GreatherThan;
-use Calendar\Expression\LowerThan;
+use Calendar\Expression\After;
+use Calendar\Expression\Before;
 use Calendar\Expression\Parser;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -78,8 +78,8 @@ class CalendarTest extends TestCase
     {
         $event = new Event(Uuid::uuid4(), 'test', new AndOperator(
             DayOfWeek::monday(),
-            new GreatherThan(new DateTime("01.01.2018")),
-            new LowerThan(new DateTime("31.12.2018"))
+            new After(new DateTime("01.01.2018")),
+            new Before(new DateTime("31.12.2018"))
         ), TimeSpan::fromString("12:00-13:00"));
 
         $collection = new ArrayCollection([$event]);
@@ -99,8 +99,8 @@ class CalendarTest extends TestCase
     {
         $event = new Event(Uuid::uuid4(), 'test', new AndOperator(
             DayOfWeek::monday(),
-            new GreatherThan(new DateTime("01.06.2018")),
-            new LowerThan(new DateTime("30.06.2018"))
+            new After(new DateTime("01.06.2018")),
+            new Before(new DateTime("30.06.2018"))
         ), TimeSpan::fromString("12:00-13:00"));
 
         $collection = new ArrayCollection([$event]);

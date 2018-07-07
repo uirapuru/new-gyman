@@ -4,7 +4,7 @@ namespace Calendar\Expression;
 
 use DateTime;
 
-final class GreatherThan implements ExpressionInterface
+final class After implements ExpressionInterface
 {
     /** @var DateTime */
     protected $date;
@@ -21,14 +21,14 @@ final class GreatherThan implements ExpressionInterface
 
     public function __toString(): string
     {
-        return sprintf("greather than %s", $this->date->format("Y-m-d H:i:s"));
+        return sprintf("after %s", $this->date->format("Y-m-d"));
     }
 
     public static function fromString(string $expression): ExpressionInterface
     {
-        if(preg_match("@^(greather than \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})$@", $expression))
+        if(preg_match("@^(after \d{4}-\d{2}-\d{2}( \d{2}:\d{2}:\d{2})*)$@", $expression))
         {
-            $expression = substr($expression, 14);
+            $expression = substr($expression, 6);
         }
 
         return new self(new DateTime($expression));

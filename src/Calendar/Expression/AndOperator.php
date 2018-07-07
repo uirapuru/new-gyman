@@ -7,39 +7,25 @@ use DateTime;
 
 final class AndOperator implements ExpressionInterface
 {
-    /** @var ExpressionInterface[]|array */
-    protected $expressions = [];
+    /** @var ExpressionInterface */
+    protected $expression1;
 
-    public function __construct()
+    /** @var ExpressionInterface */
+    protected $expression2;
+
+    public function __construct(ExpressionInterface $expression1, ExpressionInterface $expression2)
     {
-        foreach(func_get_args() as $arg) {
-            if(!$arg instanceof ExpressionInterface) {
-                throw new BadMethodCallException("Must be ExpressionInterface implemented class!");
-            }
-
-            $this->expressions[] = $arg;
-        }
+        $this->expression1 = $expression1;
+        $this->expression2 = $expression2;
     }
 
     public function isMatching(DateTime $date): bool
     {
-        /** @var ExpressionInterface $expression */
-        foreach($this->expressions as $expression) {
-            if(!$expression->isMatching($date)) {
-                return false;
-            }
-        }
-
-        return true;
+        return $this->expression1 && $this->expression2;
     }
 
     public function __toString(): string
     {
-        return implode("&", array_map("strval", $this->expressions));
-    }
-
-    public static function fromString(string $expression): ExpressionInterface
-    {
-        return Parser::parse($expression);
+        return "(" . $this->expression1 . " and " . $this->expression2 . ")";
     }
 }

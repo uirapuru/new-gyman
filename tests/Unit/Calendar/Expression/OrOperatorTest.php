@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Test\Unit\Calendar\Expression;
 
 use Calendar\Expression\OrOperator;
 use Calendar\Expression\DayOfWeek;

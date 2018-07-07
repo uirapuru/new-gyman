@@ -20,10 +20,9 @@ class CalendarTest extends TestCase
 
     public function testFilterEvents()
     {
-        $this->markTestIncomplete();
         $event1 = new Event(Uuid::uuid4(),'test1', DayOfWeek::monday(),  TimeSpan::fromString("12:00-13:00"));
         $event2 = new Event(Uuid::uuid4(),'test2', DayOfWeek::tuesday(),  TimeSpan::fromString("12:00-13:00"));
-        $event3 = new Event(Uuid::uuid4(),'test3', Parser::parse("monday,tuesday,wednesday,thursday,friday,saturday,sunday"),  TimeSpan::fromString("12:00-13:00"));
+        $event3 = new Event(Uuid::uuid4(),'test3', Parser::fromString("monday or tuesday or wednesday or thursday or friday or saturday or sunday"),  TimeSpan::fromString("12:00-13:00"));
 
         $collection = new ArrayCollection([$event1, $event2, $event3]);
 
@@ -38,10 +37,9 @@ class CalendarTest extends TestCase
 
     public function testAddEvent()
     {
-        $this->markTestIncomplete();
         $collection = new ArrayCollection([]);
         $calendar = new Calendar(Uuid::uuid4(), 'test', $collection);
-        $calendar->addEvent(new Event(Uuid::uuid4(),'test', Parser::parse("monday,tuesday,wednesday,thursday,friday,saturday,sunday"),  TimeSpan::fromString("12:00-13:00")));
+        $calendar->addEvent(new Event(Uuid::uuid4(),'test', Parser::fromString("monday or tuesday or wednesday or thursday or friday or saturday or sunday"),  TimeSpan::fromString("12:00-13:00")));
 
         $this->assertCount(1, $collection);
     }

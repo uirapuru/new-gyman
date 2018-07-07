@@ -1,21 +1,20 @@
 <?php
 
-namespace Test;
+namespace Test\Unit\Calendar\Expression;
 
 use Calendar\Expression\After;
 use Calendar\Expression\AndOperator;
 use Calendar\Expression\Before;
-use Calendar\Expression\DateExpressionGrammar;
-use Calendar\Expression\DateExpressionLexer;
-use Calendar\Expression\DateExpressionParser;
 use Calendar\Expression\DayOfWeek;
 use Calendar\Expression\ExpressionInterface;
 use Calendar\Expression\OrOperator;
+use Calendar\Expression\Parser;
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
-class LexerTest extends TestCase
+class ParserTest extends TestCase
 {
-    public function testTest()
+    public function testParsing()
     {
         $string = (string) new AndOperator(
             new OrOperator(
@@ -39,14 +38,8 @@ class LexerTest extends TestCase
 
         $this->assertEquals("((monday or (wednesday or friday)) and ((after 2017-01-01 and before 2017-06-30) or (after 2017-09-01 and before 2017-12-31)))", $string);
 
-        $lexer = new DateExpressionLexer();
-        $stream = $lexer->lex($string);
-
-        $gramma = new DateExpressionGrammar();
-        $parser = new DateExpressionParser($gramma);
-
         /** @var ExpressionInterface $result */
-        $result = $parser->parse($stream);
+        $result = Parser::fromString($string);
 
         $this->assertEquals($string, $result);
         $this->assertInstanceOf(AndOperator::class, $result);
@@ -75,5 +68,31 @@ class LexerTest extends TestCase
         $andOperatorExpressions = array_values((array) $orOperatorExpressions[1]);
         $this->assertInstanceOf(After::class, $andOperatorExpressions[0]);
         $this->assertInstanceOf(Before::class, $andOperatorExpressions[1]);
+    }
+
+    public function testParseMultiAnd()
+    {
+        $expression = Parser::fromString("monday and tuesday and wednesday and thursday and friday and saturday and sunday");
+        $this->assertFalse($expression->isMatching(new DateTime("now")));
+        $string = (string) $expression;
+
+        $expression2 = Parser::fromString($string);
+        $this->assertFalse($expression2->isMatching(new DateTime("now")));
+        $string2 = (string) $expression2;
+
+        $this->assertEquals($string, $string2);
+
+    }
+    public function testParseMultiOr()
+    {
+        $expression = Parser::fromString("monday or tuesday or wednesday or thursday or friday or saturday or sunday");
+        $this->assertTrue($expression->isMatching(new DateTime("now")));
+        $string = (string) $expression;
+
+        $expression2 = Parser::fromString($string);
+        $this->assertTrue($expression2->isMatching(new DateTime("now")));
+        $string2 = (string) $expression2;
+
+        $this->assertEquals($string, $string2);
     }
 }

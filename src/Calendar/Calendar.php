@@ -66,8 +66,15 @@ class Calendar
         return $this->name;
     }
 
-    public function events() : Collection
+    public function count() : int
     {
-        return $this->events;
+        return $this->events->count();
+    }
+
+    public function matchingEvents(DateTime $date) : Collection
+    {
+        return $this->events->filter(function(Event $event) use ($date) : bool {
+            return $event->isMatching($date);
+        });
     }
 }

@@ -34,7 +34,7 @@ class Event
 
     public static function create(UuidInterface $id, string $name, string $expression, string $time)
     {
-        return new self($id, $name, Parser::parse($expression), TimeSpan::fromString($time));
+        return new self($id, $name, Parser::fromString($expression), TimeSpan::fromString($time));
     }
 
     public function isMatching(DateTime $date) : bool
@@ -45,5 +45,15 @@ class Event
     public function duration() : int
     {
         return $this->time->minutes();
+    }
+
+    public function name() : string
+    {
+        return $this->name;
+    }
+
+    public function toString() : string
+    {
+        return (string) $this->expression;
     }
 }

@@ -14,13 +14,25 @@ Feature: I can add end manipulate events
 
   Scenario: Add event to calendar 'test'
     Given I add new 'test' calendar
-    When I add new to <calendar> new event <name> on <expression> at <hours>
-      | calendar | name | expression | hours       |
-      | test     | abc  | monday     | 10:00-11:00 |
+    When I add to 'test' events:
+    | name | expression                    | hours       |
+    | abc  | monday or wednesday or friday | 18:00-20:00 |
+    | bcd  | saturday or sunday            | 10:00-12:00 |
+    Then calendar 'test' has 2 events
+    And date 'last wednesday' matches event 'abc' in calendar 'test'
 
-    Then calendar 'test' has 1 events
+  Scenario Outline: List events for specified date range
+    Given I add new 'test' calendar
+    When I add to 'test' events:
+      | name | expression                                                               | hours       |
+      | abc  | monday or wednesday or friday and after 2018-01-01 and before 2018-01-31 | 18:00-20:00 |
+      | abc  | tuesday or thursday and after 2018-03-01 and before 2018-03-31           | 18:00-20:00 |
+    Then I get <count> events for range from <dateFrom> to <dateTo> in calendar 'test'
 
-  Scenario: List events for specified date range
+    Examples:
+      | dateFrom  | dateTo      | count |
+      | 2018-01-01 | 2018-01-07 | 2     |
+      | 2018-01-25 | 2018-03-07 | 2     |
 
   Scenario: Remove whole event from calendar
 

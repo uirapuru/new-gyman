@@ -41,6 +41,8 @@ class ParserTest extends TestCase
         /** @var ExpressionInterface $result */
         $result = Parser::fromString($string);
 
+        $this->assertEquals("((monday or (wednesday or friday)) and ((after 2017-01-01 and before 2017-06-30) or (after 2017-09-01 and before 2017-12-31)))", (string) $result);
+
         $this->assertEquals($string, $result);
         $this->assertInstanceOf(AndOperator::class, $result);
 

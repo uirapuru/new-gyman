@@ -90,17 +90,43 @@ class CalendarContext implements Context
      */
     public function iGetEventsForRangeFromTo(int $count, string $dateFrom, string $dateTo, string $calendar)
     {
-        $calendar = $this->calendarRepository->findByName($calendar);
-        $period = new DatePeriod(new DateTime($dateFrom), new DateInterval('P1D'), new DateTime($dateTo));
+//        $calendar = $this->calendarRepository->findByName($calendar);
+//        $period = new DatePeriod(new DateTime($dateFrom), new DateInterval('P1D'), new DateTime($dateTo));
+//
+//        $result = new ArrayCollection();
+//
+//        foreach($period as $day) {
+//            $result = new ArrayCollection(
+//                array_merge($calendar->matchingEvents($day)->toArray(), $result->toArray())
+//            );
+//        }
+//
+//        Assert::count($result, $count);
+    }
 
-        $result = new ArrayCollection();
+    /**
+     * @Then /^I get (.*) events with (.*) occurrences for range from (.*) to (.*) in calendar \'([^\']*)\'$/
+     */
+    public function iGetEventsWithOccurrencesForRangeFromToInCalendar(int $eventsCount, int $occurrencesCount, string $dateFrom, string $dateTo, string $calendar)
+    {
+        $occurrences = [];
+        $calendar = $this->calendarRepository->findByName($calendar);
+        $period = new DatePeriod(
+            new DateTime($dateFrom),
+            new DateInterval('P1D'),
+            new DateTime($dateTo)
+        );
+
+        $occ = $calendar->getOccurrences(new DateTime($dateFrom), new DateTime($dateTo))->toArray();
 
         foreach($period as $day) {
-            $result = new ArrayCollection(
-                array_merge($calendar->matchingEvents($day)->toArray(), $result->toArray())
-            );
+            $events = $calendar->matchingEvents($day)->toArray();
+            if(count($events) > 0) array_push($occurrences, ...$events);
         }
 
-        Assert::count($result, $count);
+        $events = array_unique($occurrences);
+
+        Assert::count($events, $eventsCount, sprintf("There should be %d events found but found %d", $eventsCount, count($events)));
+        Assert::count($occurrences, $occurrencesCount, sprintf("There should be %d occurrences found but found %d", $occurrencesCount, count($occurrences)));
     }
 }

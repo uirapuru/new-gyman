@@ -16,7 +16,7 @@ final class After implements ExpressionInterface
 
     public function isMatching(DateTime $date): bool
     {
-        return $this->date < $date;
+        return $this->date <= $date;
     }
 
     public function __toString(): string

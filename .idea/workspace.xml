@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0848a424-4531-463c-9a59-0b9c9d27fa05" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/features/bootstrap/CalendarContext.php" beforeDir="false" afterPath="$PROJECT_DIR$/features/bootstrap/CalendarContext.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/features/calendar.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/calendar.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Calendar/Calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calendar/Calendar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Calendar/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calendar/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/Calendar/Expression/ParserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Calendar/Expression/ParserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Calendar/Expression/After.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calendar/Expression/After.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Calendar/Expression/Before.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calendar/Expression/Before.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,29 +35,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="calendar.feature" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DateExpressionGrammar.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/DateExpressionGrammar.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+              <folding>
+                <element signature="e#39#69#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="calendar.feature" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/features/calendar.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+            <state relative-caret-position="208">
+              <caret line="27" column="92" selection-start-line="27" selection-start-column="92" selection-end-line="27" selection-end-column="92" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Calendar.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Calendar/Calendar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CalendarContext.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CalendarContext.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/features/bootstrap/CalendarContext.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="103" column="39" selection-start-line="103" selection-start-column="39" selection-end-line="103" selection-end-column="39" />
+            <state relative-caret-position="290">
+              <caret line="129" selection-start-line="129" selection-end-line="129" />
               <folding>
                 <element signature="e#7#22#0#PHP" expanded="true" />
               </folding>
@@ -64,23 +68,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArrayCollection.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/doctrine/collections/lib/Doctrine/Common/Collections/ArrayCollection.php">
+      <file leaf-file-name="After.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/After.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="319" column="68" lean-forward="true" selection-start-line="319" selection-start-column="68" selection-end-line="319" selection-end-column="68" />
+            <state>
+              <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CalendarTest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/Unit/CalendarTest.php">
+      <file leaf-file-name="Before.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/Before.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1207">
-              <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
-              <folding>
-                <element signature="e#29#51#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="-8">
+              <caret line="18" selection-start-line="18" selection-end-line="20" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Calendar.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Calendar/Calendar.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="565">
+              <caret line="73" column="20" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RuntimeCallHandler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/behat/behat/src/Behat/Testwork/Call/Handler/RuntimeCallHandler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="108" selection-start-line="108" selection-end-line="108" />
             </state>
           </provider>
         </entry>
@@ -88,8 +107,8 @@
       <file leaf-file-name="Event.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Calendar/Event.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4">
-              <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            <state relative-caret-position="289">
+              <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -141,8 +160,6 @@
         <option value="$PROJECT_DIR$/src/Calendar/Expression/ExpressionInterface.php" />
         <option value="$PROJECT_DIR$/src/Calendar/Expression/DateExpressionGrammar.php" />
         <option value="$PROJECT_DIR$/src/Calendar/Expression/DateExpressionLexer.php" />
-        <option value="$PROJECT_DIR$/src/Calendar/Expression/After.php" />
-        <option value="$PROJECT_DIR$/src/Calendar/Expression/Before.php" />
         <option value="$PROJECT_DIR$/tests/Unit/AndOperatorTest.php" />
         <option value="$PROJECT_DIR$/src/Calendar/Expression/AndOperator.php" />
         <option value="$PROJECT_DIR$/src/Calendar/Expression/OrOperator.php" />
@@ -157,8 +174,10 @@
         <option value="$PROJECT_DIR$/tests/Unit/Calendar/Expression/ParserTest.php" />
         <option value="$PROJECT_DIR$/src/Calendar/Calendar.php" />
         <option value="$PROJECT_DIR$/src/Calendar/Event.php" />
-        <option value="$PROJECT_DIR$/features/calendar.feature" />
+        <option value="$PROJECT_DIR$/src/Calendar/Expression/After.php" />
         <option value="$PROJECT_DIR$/features/bootstrap/CalendarContext.php" />
+        <option value="$PROJECT_DIR$/src/Calendar/Expression/Before.php" />
+        <option value="$PROJECT_DIR$/features/calendar.feature" />
       </list>
     </option>
   </component>
@@ -305,9 +324,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="-2" />
+    <option name="x" value="1920" />
+    <option name="y" value="25" />
     <option name="width" value="1920" />
-    <option name="height" value="1029" />
+    <option name="height" value="1002" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -315,6 +335,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -335,6 +356,19 @@
             <path>
               <item name="gyman" type="b2602c69:ProjectViewProjectNode" />
               <item name="gyman" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Calendar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gyman" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gyman" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Calendar" type="462c0819:PsiDirectoryNode" />
+              <item name="Expression" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gyman" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gyman" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -347,11 +381,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="AndOp&#9;FILE&#9;file:///var/www/gyman/tests/Unit/AndOperatorTest.php&#10;AbstractLe&#9;null&#9;null&#10;AllOper&#9;null&#9;null&#10;Calendar&#9;FILE&#9;file:///var/www/gyman/src/Calendar/Calendar.php" />
+    <property name="SearchEverywhereHistoryKey" value="Calendar&#9;FILE&#9;file:///var/www/gyman/src/Calendar/Calendar.php&#10;AndOp&#9;FILE&#9;file:///var/www/gyman/tests/Unit/AndOperatorTest.php&#10;AbstractLe&#9;null&#9;null&#10;AllOper&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/phpunit.xml.dist" />
@@ -400,14 +433,19 @@
     <configuration name="calendar behat" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner directory="$PROJECT_DIR$/features" scenario="" />
     </configuration>
+    <configuration name="calendar.feature::List events for specified date range" type="PhpBehatConfigurationType" factoryName="Behat" temporary="true">
+      <BehatRunner file="$PROJECT_DIR$/features/calendar.feature" scenario="List events for specified date range" scope="Scenario" />
+    </configuration>
     <list>
       <item itemvalue="Behat.calendar behat" />
       <item itemvalue="PHPUnit.local phpunit" />
       <item itemvalue="PHPUnit.ParserTest.testParseOneDay" />
       <item itemvalue="PHPUnit.LexerTest.testTest" />
+      <item itemvalue="Behat.calendar.feature::List events for specified date range" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Behat.calendar.feature::List events for specified date range" />
         <item itemvalue="PHPUnit.LexerTest.testTest" />
         <item itemvalue="PHPUnit.ParserTest.testParseOneDay" />
       </list>
@@ -424,71 +462,72 @@
       <option name="presentableId" value="Default" />
       <updated>1530649557502</updated>
       <workItem from="1530649559436" duration="7191000" />
-      <workItem from="1530740801886" duration="34898000" />
+      <workItem from="1530740801886" duration="39309000" />
+      <workItem from="1531255159308" duration="9339000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="calendar_behat - 2018.07.07 at 23h 57m 48s.xml">
+    <history-entry file="calendar_behat - 2018.07.11 at 00h 50m 26s.xml">
       <configuration name="calendar behat" configurationId="PhpBehatConfigurationType" />
     </history-entry>
-    <history-entry file="calendar_behat - 2018.07.07 at 23h 57m 55s.xml">
+    <history-entry file="calendar_behat - 2018.07.11 at 00h 52m 04s.xml">
       <configuration name="calendar behat" configurationId="PhpBehatConfigurationType" />
     </history-entry>
-    <history-entry file="calendar_behat - 2018.07.08 at 00h 10m 23s.xml">
+    <history-entry file="calendar_behat - 2018.07.11 at 00h 57m 25s.xml">
       <configuration name="calendar behat" configurationId="PhpBehatConfigurationType" />
     </history-entry>
-    <history-entry file="calendar_behat - 2018.07.08 at 00h 11m 17s.xml">
+    <history-entry file="calendar_behat - 2018.07.11 at 00h 57m 28s.xml">
       <configuration name="calendar behat" configurationId="PhpBehatConfigurationType" />
     </history-entry>
-    <history-entry file="calendar_behat - 2018.07.08 at 00h 11m 34s.xml">
+    <history-entry file="calendar_behat - 2018.07.11 at 00h 57m 50s.xml">
       <configuration name="calendar behat" configurationId="PhpBehatConfigurationType" />
     </history-entry>
-    <history-entry file="calendar_behat - 2018.07.08 at 01h 13m 59s.xml">
+    <history-entry file="calendar_behat - 2018.07.11 at 01h 00m 19s.xml">
       <configuration name="calendar behat" configurationId="PhpBehatConfigurationType" />
     </history-entry>
-    <history-entry file="calendar_behat - 2018.07.08 at 01h 15m 39s.xml">
+    <history-entry file="calendar_behat - 2018.07.11 at 01h 02m 46s.xml">
       <configuration name="calendar behat" configurationId="PhpBehatConfigurationType" />
     </history-entry>
-    <history-entry file="calendar_behat - 2018.07.08 at 01h 20m 53s.xml">
+    <history-entry file="calendar_behat - 2018.07.11 at 01h 03m 04s.xml">
       <configuration name="calendar behat" configurationId="PhpBehatConfigurationType" />
     </history-entry>
-    <history-entry file="calendar_behat - 2018.07.08 at 01h 27m 36s.xml">
+    <history-entry file="calendar_behat - 2018.07.11 at 01h 03m 50s.xml">
       <configuration name="calendar behat" configurationId="PhpBehatConfigurationType" />
     </history-entry>
-    <history-entry file="calendar_behat - 2018.07.08 at 01h 30m 08s.xml">
+    <history-entry file="calendar_behat - 2018.07.11 at 01h 11m 32s.xml">
       <configuration name="calendar behat" configurationId="PhpBehatConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42089000" />
+    <option name="totallyTimeSpent" value="55839000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-2" width="1920" height="1029" extended-state="6" />
+    <frame x="1920" y="25" width="1920" height="1002" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="10" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.50213444" side_tool="true" weight="0.40868598" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.51227677" />
-      <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49786553" weight="0.063616075" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.19850586" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.424626" />
+      <window_info id="npm" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49786553" weight="0.12465374" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.20117396" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="0" weight="0.34151548" />
-      <window_info anchor="bottom" id="Find" order="5" weight="0.31959912" />
       <window_info anchor="right" id="Structure" order="4" side_tool="true" visible="true" weight="0.20864461" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.3984375" />
       <window_info anchor="bottom" id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="7" visible="true" weight="0.46720368" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.48105624" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.31959912" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info id="Framework" order="0" weight="0.32977587" />
+      <window_info anchor="bottom" id="Message" order="4" />
       <window_info id="Grunt " order="1" side_tool="true" />
     </layout>
   </component>
@@ -502,29 +541,34 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/vendor/jakubledl/dissect/src/Dissect/Lexer/AbstractLexer.php</url>
-          <line>66</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/features/bootstrap/CalendarContext.php</url>
+          <line>129</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Calendar/Expression/Before.php</url>
+          <line>22</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="33" />
     </breakpoint-manager>
   </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>count($result)</expression-string>
+        <language-id>PHP</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>count($period)</expression-string>
+        <language-id>PHP</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Calendar/Calendar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Calendar/Event.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/Parser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -630,28 +674,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/EveryDay.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/EveryDay.php" />
     <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/AndOperator.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-204" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/ArithLexer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="60" column="21" lean-forward="true" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/ArithLexer.php" />
     <entry file="file://$PROJECT_DIR$/vendor/jakubledl/dissect/src/Dissect/Parser/LALR1/Parser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-627">
@@ -697,37 +726,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/jakubledl/dissect/src/Dissect/Lexer/AbstractLexer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/After.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="23" column="61" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/Before.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Unit/Calendar/ParserTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
-          <caret line="16" column="75" selection-start-line="16" selection-start-column="75" selection-end-line="16" selection-end-column="75" />
-          <folding>
-            <element signature="e#38#74#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Unit/Calendar/ParserTest.php" />
     <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/AndOperator.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -746,39 +745,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-          <folding>
-            <element signature="e#30#65#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/Unit/Calendar/Event/TimeTest.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/DateExpressionLexer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/Unit/Calendar/Expression/ParserTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
-          <folding>
-            <element signature="e#24#54#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/DateExpressionGrammar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="62" lean-forward="true" selection-start-line="39" selection-start-column="62" selection-end-line="39" selection-end-column="62" />
-          <folding>
-            <element signature="e#39#69#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -793,16 +769,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Unit/CalendarTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1207">
-          <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
-          <folding>
-            <element signature="e#29#51#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -823,34 +789,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Calendar/Calendar.php">
+    <entry file="file://$PROJECT_DIR$/vendor/jakubledl/dissect/src/Dissect/Lexer/AbstractLexer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+        <state relative-caret-position="163">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="36" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Unit/CalendarTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1207">
+          <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/DateExpressionLexer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Calendar/Event.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state relative-caret-position="289">
+          <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/calendar.feature">
+    <entry file="file://$PROJECT_DIR$/vendor/behat/behat/src/Behat/Testwork/Call/Handler/RuntimeCallHandler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+        <state relative-caret-position="157">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/DateExpressionGrammar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <folding>
+            <element signature="e#39#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/After.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="344" column="20" selection-start-line="344" selection-start-column="20" selection-end-line="344" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Calendar/Calendar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="73" column="20" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/features/bootstrap/CalendarContext.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="103" column="39" selection-start-line="103" selection-start-column="39" selection-end-line="103" selection-end-column="39" />
+        <state relative-caret-position="290">
+          <caret line="129" selection-start-line="129" selection-end-line="129" />
           <folding>
             <element signature="e#7#22#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Calendar/Expression/Before.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="18" selection-start-line="18" selection-end-line="20" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/calendar.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="27" column="92" selection-start-line="27" selection-start-column="92" selection-end-line="27" selection-end-column="92" />
         </state>
       </provider>
     </entry>

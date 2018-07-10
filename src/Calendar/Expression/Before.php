@@ -16,7 +16,11 @@ final class Before implements ExpressionInterface
 
     public function isMatching(DateTime $date): bool
     {
-        return $this->date > $date;
+        if($this->date->format("His") === "000000") {
+            $this->date->modify("23:59:59");
+        }
+
+        return $this->date >= $date;
     }
 
     public function __toString(): string

@@ -24,15 +24,15 @@ Feature: I can add end manipulate events
   Scenario Outline: List events for specified date range
     Given I add new 'test' calendar
     When I add to 'test' events:
-      | name | expression                                                               | hours       |
-      | abc  | monday or wednesday or friday and after 2018-01-01 and before 2018-01-31 | 18:00-20:00 |
-      | abc  | tuesday or thursday and after 2018-03-01 and before 2018-03-31           | 18:00-20:00 |
-    Then I get <count> events for range from <dateFrom> to <dateTo> in calendar 'test'
+      | name | expression                                                                   | hours       |
+      | abc  | (monday or wednesday or friday) and after 2018-01-01 and before 2018-01-31   | 18:00-20:00 |
+      | bcd  | (tuesday or thursday) and after 2018-03-01 and before 2018-03-31             | 18:00-20:00 |
+    Then I get <events> events with <occurrences> occurrences for range from <dateFrom> to <dateTo> in calendar 'test'
 
     Examples:
-      | dateFrom  | dateTo      | count |
-      | 2018-01-01 | 2018-01-07 | 2     |
-      | 2018-01-25 | 2018-03-07 | 2     |
+      | dateFrom  | dateTo      | events | occurrences |
+      | 2018-01-01 | 2018-01-07 |      1 |           3 |
+      | 2018-01-25 | 2018-03-07 |      2 |           5 |
 
   Scenario: Remove whole event from calendar
 

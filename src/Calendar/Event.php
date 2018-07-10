@@ -54,6 +54,16 @@ class Event
 
     public function toString() : string
     {
-        return (string) $this->expression;
+        return (string) $this->id->toString() . ":" . $this->expression;
+    }
+
+    public function __toString() : string
+    {
+        return $this->toString();
+    }
+
+    public function id() : UuidInterface
+    {
+        return $this->id;
     }
 }

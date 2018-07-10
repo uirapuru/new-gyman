@@ -420,7 +420,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Behat.calendar behat">
+  <component name="RunManager" selected="PHPUnit.local phpunit">
     <configuration name="LexerTest.testTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Test\LexerTest" file="$PROJECT_DIR$/tests/Unit/Calendar/Expression/ParserTest.php" method="testTest" scope="Method" />
     </configuration>

@@ -20,11 +20,18 @@ class Calendar
     /** @var Event[]|Collection|array */
     protected $events;
 
+    /** @var DateTime */
+    protected $updatedAt;
+
+    /** @var DateTime */
+    protected $createdAt;
+
     public function __construct(UuidInterface $id, string $name, ?Collection $events = null)
     {
         $this->id = $id;
         $this->name = $name;
         $this->events = $events ?? new ArrayCollection();
+        $this->createdAt = $this->updatedAt = new DateTime();
     }
 
     public function id(): UuidInterface
@@ -59,6 +66,7 @@ class Calendar
     public function addEvent(Event $event) : void
     {
         $this->events->add($event);
+        $this->updatedAt = new DateTime();
     }
 
     public function name(): string

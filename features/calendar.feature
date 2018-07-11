@@ -27,12 +27,14 @@ Feature: I can add end manipulate events
       | name | expression                                                                   | hours       |
       | abc  | (monday or wednesday or friday) and after 2018-01-01 and before 2018-01-31   | 18:00-20:00 |
       | bcd  | (tuesday or thursday) and after 2018-03-01 and before 2018-03-31             | 18:00-20:00 |
+      | cde  | after 2018-04-01 and before 2018-04-30                                       | 18:00-20:00 |
     Then I get <events> events with <occurrences> occurrences for range from <dateFrom> to <dateTo> in calendar 'test'
 
     Examples:
       | dateFrom  | dateTo      | events | occurrences |
       | 2018-01-01 | 2018-01-07 |      1 |           3 |
       | 2018-01-25 | 2018-03-07 |      2 |           5 |
+      | 2018-04-01 | 2018-04-30 |      1 |          30 |
 
   Scenario: Remove whole event from calendar
 

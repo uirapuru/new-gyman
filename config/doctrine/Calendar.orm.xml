@@ -1,0 +1,18 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+        https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <entity name="Calendar\Calendar" table="messages" repository-class="App\Repository\CalendarRepository">
+
+        <id name="id" type="uuid" column="id">
+            <generator strategy="NONE"/>
+        </id>
+
+        <field name="createdAt" column="created_at" type="datetime" nullable="false" unique="false" />
+
+        <field name="updatedAt" column="updated_at" type="datetime" nullable="true" unique="false" />
+
+    </entity>
+
+</doctrine-mapping>

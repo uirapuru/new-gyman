@@ -5,12 +5,11 @@ use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
 use Calendar\Calendar;
 use Calendar\Event;
-use Doctrine\Common\Collections\ArrayCollection;
 use Ramsey\Uuid\Uuid;
 use Test\Infrastructure\InMemoryCalendarRepository;
 use Webmozart\Assert\Assert;
 
-class CalendarContext implements Context
+class IntegrationContext implements Context
 {
     private $calendarRepository;
 
@@ -90,25 +89,26 @@ class CalendarContext implements Context
      */
     public function iGetEventsWithOccurrencesForRangeFromToInCalendar(int $eventsCount, int $occurrencesCount, string $dateFrom, string $dateTo, string $calendar)
     {
-        $occurrences = [];
-        $calendar = $this->calendarRepository->findByName($calendar);
-        $period = new DatePeriod(
-            new DateTime($dateFrom),
-            new DateInterval('P1D'),
-            new DateTime($dateTo)
-        );
+        $days = [];
 
-        $occ = $calendar->getOccurrences(new DateTime($dateFrom), new DateTime($dateTo))->toArray();
+        $dateFrom = new DateTime($dateFrom);
+        $dateTo = new DateTime($dateTo);
+        $dateTo->modify("+1 day");
+
+        $calendar = $this->calendarRepository->findByName($calendar);
+        $period = new DatePeriod($dateFrom, new DateInterval('P1D'), $dateTo);
+
+        $occurrences = $calendar->getOccurrences($dateFrom, $dateTo)->toArray();
 
         foreach($period as $day) {
             $events = $calendar->matchingEvents($day)->toArray();
-            if(count($events) > 0) array_push($occurrences, ...$events);
+            if(count($events) > 0) array_push($days, ...$events);
         }
 
-        $events = array_unique($occurrences);
+        $events = array_unique($days);
 
         Assert::count($events, $eventsCount, sprintf("There should be %d events found but found %d", $eventsCount, count($events)));
-        Assert::count($occurrences, $occurrencesCount, sprintf("There should be %d occurrences found but found %d", $occurrencesCount, count($occurrences)));
-        Assert::count($occ, $occurrencesCount, sprintf("There should be %d occurrences found but found %d", $occurrencesCount, count($occurrences)));
+        Assert::count($days, $occurrencesCount, sprintf("There should be %d days found but found %d", $occurrencesCount, count($days)));
+        Assert::count($occurrences, $occurrencesCount, sprintf("There should be %d occurrences found but found %d", $occurrencesCount, count($days)));
     }
 }

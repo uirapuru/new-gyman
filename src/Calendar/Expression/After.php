@@ -16,6 +16,10 @@ final class After implements ExpressionInterface
 
     public function isMatching(DateTime $date): bool
     {
+        if($this->date->format("His") !== "000000") {
+            $this->date->modify("00:00:00");
+        }
+
         return $this->date <= $date;
     }
 

@@ -86,25 +86,6 @@ class CalendarContext implements Context
     }
 
     /**
-     * @Then /^I get (.*) events for range from (.*) to (.*) in calendar \'([^\']*)\'$/
-     */
-    public function iGetEventsForRangeFromTo(int $count, string $dateFrom, string $dateTo, string $calendar)
-    {
-//        $calendar = $this->calendarRepository->findByName($calendar);
-//        $period = new DatePeriod(new DateTime($dateFrom), new DateInterval('P1D'), new DateTime($dateTo));
-//
-//        $result = new ArrayCollection();
-//
-//        foreach($period as $day) {
-//            $result = new ArrayCollection(
-//                array_merge($calendar->matchingEvents($day)->toArray(), $result->toArray())
-//            );
-//        }
-//
-//        Assert::count($result, $count);
-    }
-
-    /**
      * @Then /^I get (.*) events with (.*) occurrences for range from (.*) to (.*) in calendar \'([^\']*)\'$/
      */
     public function iGetEventsWithOccurrencesForRangeFromToInCalendar(int $eventsCount, int $occurrencesCount, string $dateFrom, string $dateTo, string $calendar)

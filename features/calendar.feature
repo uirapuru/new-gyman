@@ -6,6 +6,9 @@ Feature: I can add end manipulate events
     Occurrence
     Date Expression
 
+  Background:
+    Given calendar repository is empty
+
   Scenario: Create a calendar
     Given there is 0 calendars in calendar repository
     When I add new 'test' calendar
@@ -36,12 +39,12 @@ Feature: I can add end manipulate events
       | 2018-01-25 | 2018-03-07 |      2 |           5 |
       | 2018-04-01 | 2018-04-30 |      1 |          30 |
 
-  Scenario: Remove whole event from calendar
-
-  Scenario: Remove one occurrence of event from calendar
-
-  Scenario: Change events description
-
-  Scenario: Update events hours
-
-  Scenario: Move event to other days
+#  Scenario: Remove whole event from calendar
+#
+#  Scenario: Remove one occurrence of event from calendar
+#
+#  Scenario: Change events description
+#
+#  Scenario: Update events hours
+#
+#  Scenario: Move event to other days

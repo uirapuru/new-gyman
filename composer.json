@@ -54,7 +54,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/Instrastructure/Symfony",
+            "App\\": "src/Infrastructure/Symfony",
             "Calendar\\": "src/Calendar",
             "Test\\": "tests"
         },

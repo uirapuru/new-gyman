@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
 
 class IntegrationContext implements Context
 {
-    private $calendarRepository;
+    protected $calendarRepository;
 
     public function __construct(Kernel $kernel)
     {
@@ -110,5 +110,13 @@ class IntegrationContext implements Context
         Assert::count($events, $eventsCount, sprintf("There should be %d events found but found %d", $eventsCount, count($events)));
         Assert::count($days, $occurrencesCount, sprintf("There should be %d days found but found %d", $occurrencesCount, count($days)));
         Assert::count($occurrences, $occurrencesCount, sprintf("There should be %d occurrences found but found %d", $occurrencesCount, count($days)));
+    }
+
+    /**
+     * @Given /^calendar repository is empty$/
+     */
+    public function calendarRepositoryIsEmpty()
+    {
+
     }
 }

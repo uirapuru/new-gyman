@@ -11,4 +11,6 @@ interface CalendarRepositoryInterface
     public function save(Calendar $calendar): void;
 
     public function findById(UuidInterface $uuid): ?Calendar;
+
+    public function findByName(string $name): ?Calendar;
 }

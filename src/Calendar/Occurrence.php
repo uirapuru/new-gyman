@@ -28,4 +28,15 @@ class Occurrence
     {
         return $this->event;
     }
+
+    public function __toString() : string
+    {
+        $timeSpan = $this->event->time();
+
+        return json_encode([
+            "title" => $this->event->name(),
+            "start" => $this->date->format("Y-m-d") . "T" . $timeSpan->start() . ":00",
+            "end" => $this->date->format("Y-m-d") . "T" . $timeSpan->end() . ":00",
+        ]);
+    }
 }

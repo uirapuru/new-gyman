@@ -61,4 +61,14 @@ class TimeSpan
     {
         return sprintf("%s-%s", $this->from, $this->to);
     }
+
+    public function start() : Time
+    {
+        return $this->from;
+    }
+
+    public function end() : Time
+    {
+        return $this->to;
+    }
 }

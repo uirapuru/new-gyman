@@ -81,4 +81,9 @@ class Event
     {
         $this->expression = $expression;
     }
+
+    public function time() : TimeSpan
+    {
+        return $this->time;
+    }
 }

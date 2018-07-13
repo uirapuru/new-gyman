@@ -1,8 +1,12 @@
 default:
     suites:
-        default:
+        intergation:
             contexts:
-                - FeatureContext:
+                - IntegrationContext:
+                    kernel: '@kernel'
+        functional:
+            contexts:
+                - FunctionalContext:
                     kernel: '@kernel'
 
     extensions:

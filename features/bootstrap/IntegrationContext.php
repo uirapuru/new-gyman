@@ -5,6 +5,7 @@ use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
 use Calendar\Calendar;
 use Calendar\Event;
+use Calendar\Expression\Parser;
 use Ramsey\Uuid\Uuid;
 use Test\Infrastructure\InMemoryCalendarRepository;
 use Webmozart\Assert\Assert;
@@ -53,7 +54,7 @@ class IntegrationContext implements Context
     {
         $calendar = $this->calendarRepository->findByName($calendar);
 
-        $calendar->events()->add(Event::create(Uuid::uuid4(), $name, $expression, $hours));
+        $calendar->addEvent(Event::create(Uuid::uuid4(), $calendar, $name, $expression, $hours));
     }
 
     /**
@@ -80,8 +81,10 @@ class IntegrationContext implements Context
 
         $hash = $table->getHash();
         foreach ($hash as $row) {
-            $calendar->addEvent(Event::create(Uuid::uuid4(), $row['name'], $row['expression'], $row['hours']));
+            $calendar->addEvent(Event::create(Uuid::uuid4(), $calendar, $row['name'], $row['expression'], $row['hours']));
         }
+
+        $this->calendarRepository->save($calendar);
     }
 
     /**
@@ -98,10 +101,10 @@ class IntegrationContext implements Context
         $calendar = $this->calendarRepository->findByName($calendar);
         $period = new DatePeriod($dateFrom, new DateInterval('P1D'), $dateTo);
 
-        $occurrences = $calendar->getOccurrences($dateFrom, $dateTo)->toArray();
+        $occurrences = $calendar->getOccurrences($dateFrom, $dateTo);
 
         foreach($period as $day) {
-            $events = $calendar->matchingEvents($day)->toArray();
+            $events = $calendar->matchingEvents($day);
             if(count($events) > 0) array_push($days, ...$events);
         }
 
@@ -118,5 +121,31 @@ class IntegrationContext implements Context
     public function calendarRepositoryIsEmpty()
     {
 
+    }
+
+    /**
+     * @When /^I remove \'([^\']*)\' event from \'([^\']*)\' calendar$/
+     */
+    public function iRemoveEventFromCalendar(string $eventName, string $calendarName)
+    {
+        /** @var Calendar $calendar */
+        $calendar = $this->calendarRepository->findByName($calendarName);
+        $event = $calendar->getEventByName($eventName);
+        $calendar->removeEvent($event);
+    }
+
+    /**
+     * @When /^I update event \'([^\']*)\' in calendar \'([^\']*)\' with expression \'([^\']*)\'$/
+     */
+    public function iUpdateEventInCalendarWithExpression(string $eventName, string $calendarName, string $expression)
+    {
+        /** @var Calendar $calendar */
+        $calendar = $this->calendarRepository->findByName($calendarName);
+        /** @var Event $event */
+        $event = $calendar->getEventByName($eventName);
+
+        $event->updateExpression(Parser::fromString($expression));
+
+        $this->calendarRepository->save($calendar);
     }
 }

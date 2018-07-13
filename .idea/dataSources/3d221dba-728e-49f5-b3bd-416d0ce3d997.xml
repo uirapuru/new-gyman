@@ -924,25 +924,70 @@
     <table id="232" parent="5" name="calendars">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <column id="233" parent="232" name="id">
+    <table id="233" parent="5" name="events">
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <column id="234" parent="232" name="id">
       <Position>1</Position>
       <Comment>(DC2Type:uuid)</Comment>
       <DataType>char(36)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="234" parent="232" name="created_at">
+    <column id="235" parent="232" name="name">
       <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="236" parent="232" name="created_at">
+      <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="232" name="updated_at">
-      <Position>3</Position>
+    <column id="237" parent="232" name="updated_at">
+      <Position>4</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="236" parent="232" name="PRIMARY">
+    <key id="238" parent="232" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="239" parent="233" name="id">
+      <Position>1</Position>
+      <Comment>(DC2Type:uuid)</Comment>
+      <DataType>char(36)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="240" parent="233" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="241" parent="233" name="expression">
+      <Position>3</Position>
+      <Comment>(DC2Type:date_expression)</Comment>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="242" parent="233" name="created_at">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="243" parent="233" name="updated_at">
+      <Position>5</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="244" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

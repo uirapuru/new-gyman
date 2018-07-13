@@ -2,13 +2,12 @@
 
 namespace Calendar;
 
-
 use Calendar\Event\TimeSpan;
 use Calendar\Expression\ExpressionInterface;
 use Calendar\Expression\Parser;
 use DateTime;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
-use Symfony\Component\Validator\Constraints\Uuid;
 
 class Event
 {
@@ -18,23 +17,34 @@ class Event
     /** @var string */
     protected $name;
 
+    /** @var Calendar */
+    protected $calendar;
+
     /** @var ExpressionInterface */
     protected $expression;
 
     /** @var TimeSpan */
     protected $time;
 
-    public function __construct(UuidInterface $id, string $name, ExpressionInterface $expression, TimeSpan $time)
+    /** @var DateTime */
+    protected $updatedAt;
+
+    /** @var DateTime */
+    protected $createdAt;
+
+    public function __construct(UuidInterface $id, Calendar $calendar, string $name, ExpressionInterface $expression, TimeSpan $time)
     {
         $this->id = $id;
+        $this->calendar = $calendar;
         $this->name = $name;
         $this->expression = $expression;
         $this->time = $time;
+        $this->createdAt = $this->updatedAt = new DateTime();
     }
 
-    public static function create(UuidInterface $id, string $name, string $expression, string $time)
+    public static function create(UuidInterface $id, Calendar $calendar, string $name, string $expression, string $time)
     {
-        return new self($id, $name, Parser::fromString($expression), TimeSpan::fromString($time));
+        return new self($id, $calendar, $name, Parser::fromString($expression), TimeSpan::fromString($time));
     }
 
     public function isMatching(DateTime $date) : bool
@@ -65,5 +75,10 @@ class Event
     public function id() : UuidInterface
     {
         return $this->id;
+    }
+
+    public function updateExpression(ExpressionInterface $expression)
+    {
+        $this->expression = $expression;
     }
 }

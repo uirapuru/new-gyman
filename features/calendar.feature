@@ -39,9 +39,24 @@ Feature: I can add end manipulate events
       | 2018-01-25 | 2018-03-07 |      2 |           5 |
       | 2018-04-01 | 2018-04-30 |      1 |          30 |
 
-#  Scenario: Remove whole event from calendar
-#
-#  Scenario: Remove one occurrence of event from calendar
+  Scenario: Remove whole event from calendar
+    Given I add new 'test' calendar
+    And I add to 'test' events:
+      | name | expression                                                                   | hours       |
+      | abc  | (monday or wednesday or friday) and after 2018-01-01 and before 2018-01-31   | 18:00-20:00 |
+      | bcd  | (tuesday or thursday) and after 2018-03-01 and before 2018-03-31             | 18:00-20:00 |
+    When I remove 'abc' event from 'test' calendar
+    Then calendar 'test' has 1 events
+
+  Scenario: Update events dates
+    Given I add new 'test' calendar
+    And I add to 'test' events:
+      | name | expression                                                                   | hours       |
+      | abc  | after 2018-04-01 and before 2018-04-30                                       | 16:00-18:00 |
+      | cde  | after 2018-05-01 and before 2018-05-30                                       | 18:00-20:00 |
+    When I update event 'cde' in calendar 'test' with expression 'after 2018-05-01 and before 2018-05-15'
+    Then I get 2 events with 45 occurrences for range from 2018-04-01 to 2018-05-30 in calendar 'test'
+
 #
 #  Scenario: Change events description
 #

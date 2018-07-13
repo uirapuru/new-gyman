@@ -17,7 +17,7 @@ class Calendar
     /** @var string */
     protected $name;
 
-    /** @var Event[]|Collection|array */
+    /** @var Event[]|array|Collection */
     protected $events;
 
     /** @var DateTime */
@@ -46,16 +46,16 @@ class Calendar
         });
     }
 
-    public function getOccurrences(DateTime $start, DateTime $end) : Collection
+    public function getOccurrences(DateTime $start, DateTime $end) : array
     {
         $period = new DatePeriod($start, new DateInterval('P1D'), $end);
 
-        $result = new ArrayCollection();
+        $result = [];
 
         foreach($period as $day) {
             foreach($this->events as $event) {
                 if($event->isMatching($day)) {
-                    $result->add(new Occurrence($day, $event));
+                    $result[] = new Occurrence($day, $event);
                 }
             }
         }
@@ -69,6 +69,18 @@ class Calendar
         $this->updatedAt = new DateTime();
     }
 
+    public function removeEvent(Event $event) : void
+    {
+        foreach($this->events as $key => $value) {
+            if($value === $event) {
+                unset($this->events[$key]);
+                break;
+            }
+        }
+
+        $this->updatedAt = new DateTime();
+    }
+
     public function name(): string
     {
         return $this->name;
@@ -76,7 +88,7 @@ class Calendar
 
     public function count() : int
     {
-        return $this->events->count();
+        return count($this->events);
     }
 
     public function matchingEvents(DateTime $date) : Collection
@@ -84,5 +96,21 @@ class Calendar
         return $this->events->filter(function(Event $event) use ($date) : bool {
             return $event->isMatching($date);
         });
+    }
+
+    public function events() : array
+    {
+        return $this->events;
+    }
+
+    public function getEventByName(string $name) : ?Event
+    {
+        foreach($this->events as $event) {
+            if($event->name() === $name) {
+                return $event;
+            }
+        }
+
+        return null;
     }
 }

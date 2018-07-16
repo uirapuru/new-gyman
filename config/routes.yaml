@@ -1,3 +1,7 @@
 index:
     path: /
     controller: App\Controller\DefaultController::indexAction
+
+addEvent:
+    path: /add-event
+    controller: App\Controller\DefaultController::addEventAction

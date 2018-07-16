@@ -5,7 +5,7 @@
       <tool tool_name="Behat">
         <settings>
           <configurations>
-            <local_configuration executable_path="$PROJECT_DIR$/vendor/behat/behat/bin/behat" />
+            <local_configuration configuration_file_path="$PROJECT_DIR$/behat.yml" executable_path="$PROJECT_DIR$/vendor/behat/behat/bin/behat" use_configuration_file="true" />
           </configurations>
         </settings>
       </tool>

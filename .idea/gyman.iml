@@ -35,6 +35,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/jdorn/sql-formatter" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jean85/pretty-package-versions" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/justinrainbow/json-schema" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/league/tactician" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/league/tactician-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/league/tactician-container" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/league/tactician-logger" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nette/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nette/di" />

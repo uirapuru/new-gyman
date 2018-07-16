@@ -35,3 +35,19 @@ services:
       public: true
       arguments:
         - 'Calendar\Calendar'
+
+    App\Repository\EventRepository:
+      factory: ["@doctrine.orm.entity_manager", "getRepository"]
+      public: true
+      arguments:
+        - 'Calendar\Event'
+
+    Calendar\Repository\CalendarRepositoryInterface: '@App\Repository\CalendarRepository'
+    Calendar\Repository\EventRepositoryInterface: '@App\Repository\EventRepository'
+
+    Calendar\Handler\CreateEventHandler:
+#      arguments:
+#        $calendarRepository: '@App\Repository\CalendarRepository'
+#        $eventRepository: '@App\Repository\EventRepository'
+      tags:
+        - {name: tactician.handler, command: Calendar\Command\CreateEvent }

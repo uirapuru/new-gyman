@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Form\Type\CreateEventType;
 use Calendar\Calendar;
 use Calendar\Event;
 use Calendar\Expression\Parser;
@@ -11,10 +12,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends AbstractController
 {
-    public function indexAction(Request $request)
+    public function indexAction(Request $request) : Response
     {
         $collection = new ArrayCollection();
         $calendar = new Calendar(Uuid::uuid4(), "", $collection);
@@ -27,6 +29,25 @@ class DefaultController extends AbstractController
 
         return $this->render("default/index.html.twig", [
             "events" => $events
+        ]);
+    }
+
+    public function addEventAction(Request $request) : Response
+    {
+        $form = $this->createForm(CreateEventType::class, null, []);
+
+        if($request->isMethod("POST")) {
+            $form->handleRequest($request);
+
+            if($form->isValid()) {
+                $data = $form->getData();
+
+                $this->get('tactician');
+            }
+        }
+
+        return $this->render("default/addEvent.html.twig", [
+            "form" => $form->createView()
         ]);
     }
 }

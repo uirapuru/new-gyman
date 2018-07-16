@@ -1,10 +1,16 @@
 Feature: I can add end manipulate events
 
   Dictionary
-    Calendar
-    Event
-    Occurrence
-    Date Expression
+    - Calendar
+    - Event
+    - Occurrence
+    - Date Expression
+
+  * You can add event to calendar
+  * You can remove event from calendar
+  * You can update events: name, calendarId, endDate, timespan
+  * You can't change events: id, startDate, weekdays
+
 
   Background:
     Given calendar repository is empty

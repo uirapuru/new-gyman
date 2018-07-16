@@ -19,7 +19,7 @@ class BuilderTest extends TestCase
             ->expression()
         ;
 
-        $this->assertEquals("((monday or (wednesday or friday)) and (after 2018-01-01 and before 2018-01-01))", (string) $expression);
+        $this->assertEquals("((monday or (wednesday or friday)) and (after 2018-01-01 and before 2018-01-30))", (string) $expression);
 
         $expression = Builder::create()
             ->setStartDate(new DateTime("2018-01-01"))
@@ -27,7 +27,7 @@ class BuilderTest extends TestCase
             ->expression()
         ;
 
-        $this->assertEquals("(after 2018-01-01 and before 2018-01-01)", (string) $expression);
+        $this->assertEquals("(after 2018-01-01 and before 2018-01-30)", (string) $expression);
 
         $expression = Builder::create()
             ->setMonday()

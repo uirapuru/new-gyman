@@ -6,6 +6,7 @@ use Calendar\Calendar;
 use Calendar\Repository\CalendarRepositoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
 class InMemoryCalendarRepository implements CalendarRepositoryInterface
@@ -42,5 +43,10 @@ class InMemoryCalendarRepository implements CalendarRepositoryInterface
         }
 
         return null;
+    }
+
+    public function find(UuidInterface $id) : ?Calendar
+    {
+        return $this->findById($id);
     }
 }

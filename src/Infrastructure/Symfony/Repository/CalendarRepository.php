@@ -12,7 +12,7 @@ class CalendarRepository extends EntityRepository implements CalendarRepositoryI
     public function save(Calendar $calendar): void
     {
         $this->getEntityManager()->persist($calendar);
-        $this->getEntityManager()->flush($calendar);
+        $this->getEntityManager()->flush();
     }
 
     public function findById(UuidInterface $uuid): ?Calendar

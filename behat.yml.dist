@@ -1,6 +1,6 @@
 default:
     suites:
-        default:
+        integration:
             contexts:
                 - IntegrationContext:
                     kernel: '@kernel'
@@ -8,6 +8,11 @@ default:
             contexts:
                 - FunctionalContext:
                     kernel: '@kernel'
+        web:
+            contexts:
+                - WebContext:
+                    kernel: '@kernel'
+
     extensions:
           Behat\Symfony2Extension:
                 kernel:

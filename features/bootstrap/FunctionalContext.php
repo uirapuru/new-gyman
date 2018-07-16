@@ -8,6 +8,7 @@ use Calendar\Command\CreateEvent;
 use Calendar\Event\TimeSpan;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\SchemaTool;
+use Webmozart\Assert\Assert;
 
 class FunctionalContext extends IntegrationContext
 {
@@ -37,9 +38,12 @@ class FunctionalContext extends IntegrationContext
         $tool->dropSchema($metaData);
         $tool->createSchema($metaData);
     }
+
     public function iAddToEvents(string $calendar, TableNode $table)
     {
         $calendar = $this->calendarRepository->findByName($calendar);
+
+        Assert::notNull($calendar);
 
         $hash = $table->getHash();
         foreach ($hash as $row) {

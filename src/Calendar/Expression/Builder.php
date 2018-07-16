@@ -123,7 +123,7 @@ class Builder
         }
 
         if($this->endDate !== null) {
-            $array[] = "before " . $this->startDate->format("Y-m-d");
+            $array[] = "before " . $this->endDate->format("Y-m-d");
         }
 
         return Parser::fromString(implode(" and ", $array));

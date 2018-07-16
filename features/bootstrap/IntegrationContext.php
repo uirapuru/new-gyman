@@ -65,6 +65,8 @@ class IntegrationContext implements Context
         /** @var Calendar $calendar */
         $calendar = $this->calendarRepository->findByName($calendarName);
 
+        Assert::notNull($calendar);
+
         /** @var Event[] $events */
         $events = $calendar->matchingEvents(new DateTime($date));
 

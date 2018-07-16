@@ -2,12 +2,14 @@
 
 namespace Calendar\Handler;
 
+use Calendar\Calendar;
 use Calendar\Command\CreateEvent;
 use Calendar\Event;
 use Calendar\Expression\Builder;
 use Calendar\Repository\CalendarRepositoryInterface;
 use Calendar\Repository\EventRepositoryInterface;
 use Ramsey\Uuid\Uuid;
+use Webmozart\Assert\Assert;
 
 class CreateEventHandler
 {
@@ -25,7 +27,10 @@ class CreateEventHandler
 
     public function handle(CreateEvent $command)
     {
-        $calendar = $this->calendarRepository->findByName($command->calendarId());
+        /** @var Calendar $calendar */
+        $calendar = $this->calendarRepository->findById($command->calendarId());
+
+        Assert::notNull($calendar, 'Calendar does not exists');
 
         $expression = Builder::create()
             ->setStartDate($command->startDate())

@@ -32,8 +32,6 @@ class DefaultController extends AbstractController
             array_push($events, ...$result);
         }
 
-        dump($events);
-
         return $this->render("default/index.html.twig", [
             "events" => $events,
             "startDate" => $startDate,
@@ -56,11 +54,7 @@ class DefaultController extends AbstractController
             $form->handleRequest($request);
 
             if($form->isValid()) {
-                $data = $form->getData();
-
-                dump($data);
-
-                $bus->handle($data);
+                $bus->handle($form->getData());
             }
         }
 

@@ -24,11 +24,18 @@ class WebContext extends FunctionalContext
             $form = $crawler->filter("form")->form([
                 'create_event[calendarId]' => $calendar->id(),
                 'create_event[name]' => $row['name'],
-                'create_event[startDate]' => $startDate->format("Y-m-d"),
-                'create_event[endDate]' => $endDate->format("Y-m-d"),
+                'create_event[startDate]' => $startDate ? $startDate->format("Y-m-d") : null,
+                'create_event[endDate]' => $endDate ? $endDate->format("Y-m-d") : null,
                 'create_event[timeSpan][start]' => $startHour,
                 'create_event[timeSpan][end]' => $endHour,
             ]);
+
+            foreach($days as $day) {
+
+                $number = (int) (new DateTime($day))->format("w") - 1;
+                if($number === -1) $number = 6;
+                $form["create_event[days]"][$number]->tick();
+            }
 
             $client->submit($form);
         }

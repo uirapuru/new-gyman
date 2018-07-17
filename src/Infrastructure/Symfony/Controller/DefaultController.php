@@ -4,14 +4,11 @@ namespace App\Controller;
 
 
 use App\Form\Type\CreateEventType;
-use App\Repository\CalendarRepository;
 use Calendar\Calendar;
-use Calendar\Event;
-use Calendar\Expression\Parser;
+use Calendar\Command\CreateEvent;
 use Calendar\Repository\CalendarRepositoryInterface;
 use DateTime;
-use Doctrine\Common\Collections\ArrayCollection;
-use const Grpc\CALL_ERROR_NOT_ON_CLIENT;
+use League\Tactician\CommandBus;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -44,9 +41,16 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    public function addEventAction(Request $request) : Response
+    public function addEventAction(Request $request, CommandBus $bus, CalendarRepositoryInterface $repository) : Response
     {
-        $form = $this->createForm(CreateEventType::class, null, []);
+        $calendars = array_reduce($repository->findAll(), function(&$result, Calendar $calendar) : array {
+            $result[$calendar->name()] = $calendar->id()->toString();
+            return $result;
+        }, []);
+
+        $command = CreateEvent::empty();
+
+        $form = $this->createForm(CreateEventType::class, $command, ["calendars" => $calendars]);
 
         if($request->isMethod("POST")) {
             $form->handleRequest($request);
@@ -54,7 +58,9 @@ class DefaultController extends AbstractController
             if($form->isValid()) {
                 $data = $form->getData();
 
-                $this->get('tactician');
+                dump($data);
+
+                $bus->handle($data);
             }
         }
 

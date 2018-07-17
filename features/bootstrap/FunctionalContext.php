@@ -13,7 +13,7 @@ use Webmozart\Assert\Assert;
 class FunctionalContext extends IntegrationContext
 {
     /** @var Kernel */
-    private $kernel;
+    protected $kernel;
 
     public function __construct(Kernel $kernel)
     {
@@ -49,7 +49,7 @@ class FunctionalContext extends IntegrationContext
         foreach ($hash as $row) {
             list($startDate, $endDate, $days) = $this->parseExpression($row['expression']);
 
-            $this->get('tactician.commandbus.default')->handle(new CreateEvent(
+            $this->get('tactician.commandbus.default')->handle(CreateEvent::withData(
                 $calendar->id(),
                 $row['name'],
                 $startDate ?? new DateTime,
@@ -60,7 +60,7 @@ class FunctionalContext extends IntegrationContext
         }
     }
 
-    private function parseExpression(string $expression) : array
+    protected function parseExpression(string $expression) : array
     {
         $start = null;
         $end = null;

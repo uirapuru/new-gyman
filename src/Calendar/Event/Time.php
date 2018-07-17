@@ -27,7 +27,7 @@ class Time
         return new self(...sscanf($time, "%d:%d"));
     }
 
-    public function toDateTime() : \DateTime
+    public function toDateTime() : DateTime
     {
         return (new DateTime("now"))->modify(sprintf("%01d:%01d", $this->hour, $this->minutes));
     }

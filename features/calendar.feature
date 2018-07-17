@@ -24,9 +24,9 @@ Feature: I can add end manipulate events
   Scenario: Add event to calendar 'test'
     Given I add new 'test' calendar
     When I add to 'test' events:
-    | name | expression                    | hours       |
-    | abc  | monday or wednesday or friday | 18:00-20:00 |
-    | bcd  | saturday or sunday            | 10:00-12:00 |
+    | name | expression                                           | hours       |
+    | abc  | (monday or wednesday or friday) and after 2018-01-01 | 18:00-20:00 |
+    | bcd  | (saturday or sunday) and after 2018-01-01            | 10:00-12:00 |
     Then calendar 'test' has 2 events
     And date 'last wednesday' matches event 'abc' in calendar 'test'
 

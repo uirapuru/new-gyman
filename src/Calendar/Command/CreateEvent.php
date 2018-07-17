@@ -26,7 +26,7 @@ class CreateEvent
     /** @var array */
     protected $days;
 
-    public function __construct(UuidInterface $calendarId, string $name, DateTime $startDate, ?DateTime $endDate, TimeSpan $timeSpan, array $days)
+    protected function __construct(?UuidInterface $calendarId = null, ?string $name = "", ?DateTime $startDate = null, ?DateTime $endDate = null, ?TimeSpan $timeSpan = null, ?array $days = [])
     {
         $this->calendarId = $calendarId;
         $this->name = $name;
@@ -36,7 +36,17 @@ class CreateEvent
         $this->days = $days;
     }
 
-    public function calendarId(): UuidInterface
+    public static function withData(UuidInterface $calendarId, string $name, DateTime $startDate, ?DateTime $endDate, TimeSpan $timeSpan, array $days) : self
+    {
+        return new self(...func_get_args());
+    }
+
+    public static function empty() : self
+    {
+        return new self();
+    }
+
+    public function calendarId(): ?UuidInterface
     {
         return $this->calendarId;
     }
@@ -46,7 +56,7 @@ class CreateEvent
         return $this->name;
     }
 
-    public function startDate(): DateTime
+    public function startDate(): ?DateTime
     {
         return $this->startDate;
     }
@@ -56,7 +66,7 @@ class CreateEvent
         return $this->endDate;
     }
 
-    public function timeSpan(): TimeSpan
+    public function timeSpan(): ?TimeSpan
     {
         return $this->timeSpan;
     }

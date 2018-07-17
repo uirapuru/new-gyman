@@ -2,6 +2,7 @@
 
 namespace Calendar\Event;
 
+use DateTime;
 use Exception;
 use Webmozart\Assert\Assert;
 
@@ -40,6 +41,11 @@ class TimeSpan
         Assert::notNull($end);
 
         return new self(Time::fromString($start), Time::fromString($end));
+    }
+
+    public static function fromDateTimes(DateTime $startHour, DateTime $endHour) : self
+    {
+        return new self(Time::fromString($startHour->format("H:i")), Time::fromString($endHour->format("H:i")));
     }
 
     public function minutes() : int

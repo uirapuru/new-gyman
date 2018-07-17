@@ -48,7 +48,7 @@ class Calendar
 
     public function getOccurrences(DateTime $start, DateTime $end) : array
     {
-        $period = new DatePeriod($start, new DateInterval('P1D'), $end);
+        $period = new DatePeriod($start, new DateInterval('P1D'), $end->modify("+1 day"));
 
         $result = [];
 

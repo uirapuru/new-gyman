@@ -63,8 +63,7 @@ Feature: I can add end manipulate events
     When I update event 'cde' in calendar 'test' with expression 'after 2018-05-01 and before 2018-05-15'
     Then I get 2 events with 45 occurrences for range from 2018-04-01 to 2018-05-30 in calendar 'test'
 
-#
-#  Scenario: Change events description
+  Scenario: Change events description
 #
 #  Scenario: Update events hours
 #

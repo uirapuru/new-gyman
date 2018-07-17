@@ -31,7 +31,19 @@
             snapDuration: '00:15:00',
             selectable: true,
             firstDay: 1,
-            // select: newSelectionHandler,
+            select: function(start, end) {
+                var message = "Dodać nowe wydarzenie?\n\nPoczątek:\t"
+                    + start.format("YYYY.MM.DD [o] HH:mm")
+                    + "\nKoniec:\t"
+                    + end.format("YYYY.MM.DD [o] HH:mm");
+
+                if (confirm(message)) {
+                    window.location.href = Routing.generate('createEvent', {
+                        startDate: start.format("YYYYMMDDHHmm"),
+                        endDate: end.format("YYYYMMDDHHmm")
+                    })
+                }
+            },
             // eventDrag: dragHandler,
             // eventDrag: dragHandler,
             // eventResize: resizeHandler,
@@ -39,11 +51,12 @@
             // eventClick: eventClickHandler,
             contentHeight: "auto",
             height: "auto",
-            events: [
-                {% for event in events %}
-                    {{ event|raw }},
-                {% endfor %}
-            ]
+            {#events: [#}
+                {#{% for event in events %}#}
+                    {#{{ event|raw }},#}
+                {#{% endfor %}#}
+            {#]#}
+            events: Routing.generate('getEvents'),
         });
 
     </script>

@@ -24,7 +24,7 @@ class Event
     protected $expression;
 
     /** @var TimeSpan */
-    protected $time;
+    protected $timespan;
 
     /** @var DateTime */
     protected $updatedAt;
@@ -38,7 +38,7 @@ class Event
         $this->calendar = $calendar;
         $this->name = $name;
         $this->expression = $expression;
-        $this->time = $time;
+        $this->timespan = $time;
         $this->createdAt = $this->updatedAt = new DateTime();
     }
 
@@ -54,7 +54,7 @@ class Event
 
     public function duration() : int
     {
-        return $this->time->minutes();
+        return $this->timespan->minutes();
     }
 
     public function name() : string
@@ -82,8 +82,8 @@ class Event
         $this->expression = $expression;
     }
 
-    public function time() : TimeSpan
+    public function timespan() : TimeSpan
     {
-        return $this->time;
+        return $this->timespan;
     }
 }

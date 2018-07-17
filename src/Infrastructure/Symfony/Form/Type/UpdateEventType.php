@@ -3,50 +3,23 @@
 namespace App\Form\Type;
 
 use Calendar\Command\CreateEvent;
-use DateTime;
+use Calendar\Command\UpdateEvent;
 use Ramsey\Uuid\Uuid;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\DataMapperInterface;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CreateEventType extends AbstractType implements DataMapperInterface
+class UpdateEventType extends CreateEventType
 {
     public function buildForm(FormBuilderInterface $builder, array $options) : void
     {
+
+        parent::buildForm($builder, $options);
+
         $builder
-            ->add('calendarId', ChoiceType::class, [
-                'required'     => true,
-                'choices'   => $options["calendars"],
-            ])
-            ->add('name', TextType::class)
-            ->add('startDate', DateType::class, [
-                "data" => new DateTime(),
-                "widget" => "single_text",
-            ])
-            ->add('endDate', DateType::class, [
-                "data" => new DateTime("+1 month"),
-                "widget" => "single_text",
-            ])
-            ->add("timeSpan", TimeSpanType::class)
-            ->add('days', ChoiceType::class, [
-                "choices" => [
-                    "monday" => "monday",
-                    "tuesday" => "tuesday",
-                    "wednesday" => "wednesday",
-                    "thursday" => "thursday",
-                    "friday" => "friday",
-                    "saturday" => "saturday",
-                    "sunday" => "sunday",
-                ],
-                "multiple" => true,
-                "expanded" => true
-            ])
+            ->remove('startDate')
+            ->remove('days')
             ->add('submit', SubmitType::class)
         ;
 
@@ -56,23 +29,18 @@ class CreateEventType extends AbstractType implements DataMapperInterface
     public function configureOptions(OptionsResolver $resolver) : void
     {
         $resolver->setDefaults([
-            'data_class' => CreateEvent::class,
+            'data_class' => UpdateEvent::class,
             "calendars" => []
         ]);
     }
 
-    public function getBlockPrefix() : string
-    {
-        return $this->getName();
-    }
-
     public function getName() : string
     {
-        return 'create_event';
+        return 'update_event';
     }
 
     /**
-     * @param CreateEvent $data
+     * @param UpdateEvent $data
      * @param FormInterface[]|\Traversable $forms
      */
     public function mapDataToForms($data, $forms)

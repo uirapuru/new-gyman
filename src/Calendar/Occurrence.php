@@ -31,7 +31,7 @@ class Occurrence
 
     public function __toString() : string
     {
-        $timeSpan = $this->event->time();
+        $timeSpan = $this->event->timespan();
 
         return json_encode([
             "title" => $this->event->name(),

@@ -13,6 +13,8 @@
 
         <field name="expression" column="expression" type="date_expression" nullable="false" unique="false" />
 
+        <field name="timespan" column="timespan" type="timespan" nullable="false" unique="false" />
+
         <many-to-one field="calendar" target-entity="Calendar\Calendar" inversed-by="events">
             <cascade>
                 <cascade-persist/>

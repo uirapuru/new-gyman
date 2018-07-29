@@ -12,14 +12,11 @@ final class Before implements ExpressionInterface
     public function __construct(DateTime $date)
     {
         $this->date = $date;
+        $this->date->modify("23:59:59");
     }
 
     public function isMatching(DateTime $date): bool
     {
-        if($this->date->format("His") === "000000") {
-            $this->date->modify("23:59:59");
-        }
-
         return $this->date >= $date;
     }
 

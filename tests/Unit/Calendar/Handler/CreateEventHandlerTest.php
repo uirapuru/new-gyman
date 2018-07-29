@@ -28,7 +28,7 @@ class CreateEventHandlerTest extends TestCase
 
         $handler = new CreateEventHandler($calendarRepository, new InMemoryEventRepository($events));
 
-        $handler->handle(new CreateEvent(
+        $handler->handle(CreateEvent::withData(
             $calendarId,
             "some name",
             new DateTime("2018-01-01"),

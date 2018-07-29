@@ -53,6 +53,7 @@ class DefaultController extends AbstractController
             return $result;
         }, []);
 
+        $calendarId = Uuid::fromString(reset($calendars));
 
         $command = CreateEvent::withData(
             $calendarId,
@@ -66,7 +67,7 @@ class DefaultController extends AbstractController
             [
                 Carbon::createFromFormat('YmdHi', $request->get('startDate', (new DateTime('now'))->format('YmdHi')))->format('N'),
             ]
-    );
+        );
 
         $form = $this->createForm(CreateEventType::class, $command, ["calendars" => $calendars]);
 
@@ -87,6 +88,9 @@ class DefaultController extends AbstractController
     {
         $start = Carbon::parse($request->get('start', 'this week'));
         $end = Carbon::parse($request->get('end', 'next week'));
+
+        $start->modify("00:00:00");
+        $end->modify("23:59:59");
 
         $events = [];
 

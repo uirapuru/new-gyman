@@ -2,7 +2,6 @@
 
 namespace Test\Functional;
 
-use App\Kernel;
 use Calendar\Calendar;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\SchemaTool;
@@ -52,7 +51,5 @@ class CalendarControllerTest extends WebTestCase
 
         $data = json_decode($response->getContent(), JSON_OBJECT_AS_ARRAY);
         $this->assertCount(7, $data);
-
-
     }
 }

@@ -10,8 +10,7 @@ class WebContext extends FunctionalContext
         $calendar = $this->calendarRepository->findByName($calendar);
         Assert::notNull($calendar);
 
-        $client = $this->kernel->getContainer()->get('test.client');
-//        $client->setServerParameters($server);
+        $client = $this->get('test.client');
 
         $hash = $table->getHash();
         foreach ($hash as $row) {
@@ -39,5 +38,13 @@ class WebContext extends FunctionalContext
 
             $client->submit($form);
         }
+    }
+
+    public function calendarHasEvents(string $calendarName, int $eventsCount)
+    {
+
+
+
+        Assert::eq($calendar->count(), $eventsCount);
     }
 }

@@ -20,7 +20,7 @@ class TimeSpan
     protected function __construct(Time $from, Time $to)
     {
         if($from->gt($to)) {
-            throw new Exception("End hour can't be grater than starting hour!");
+            throw new Exception("End hour can't be greater than starting hour!");
         }
 
         if($from->equals($to)) {
@@ -33,7 +33,7 @@ class TimeSpan
 
     public static function fromString(string $string) : self
     {
-        Assert::regex($string, "@\d+:\d+-\d+:\d+@");
+        Assert::regex($string, "@\d{2}:\d{2}-\d{2}:\d{2}@");
 
         list($start, $end) = explode("-", $string);
 

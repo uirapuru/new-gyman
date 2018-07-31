@@ -53,6 +53,8 @@ class DefaultController extends AbstractController
             return $result;
         }, []);
 
+        Assert::minCount($calendars, 1);
+
         $calendarId = Uuid::fromString(reset($calendars));
 
         $command = CreateEvent::withData(

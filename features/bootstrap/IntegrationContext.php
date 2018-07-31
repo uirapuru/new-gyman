@@ -6,12 +6,14 @@ use Behat\Gherkin\Node\TableNode;
 use Calendar\Calendar;
 use Calendar\Event;
 use Calendar\Expression\Parser;
+use Calendar\Repository\CalendarRepositoryInterface;
 use Ramsey\Uuid\Uuid;
 use Test\Infrastructure\InMemoryCalendarRepository;
 use Webmozart\Assert\Assert;
 
 class IntegrationContext implements Context
 {
+    /** @var CalendarRepositoryInterface  */
     protected $calendarRepository;
 
     public function __construct(Kernel $kernel)
@@ -71,7 +73,7 @@ class IntegrationContext implements Context
         $events = $calendar->matchingEvents(new DateTime($date));
 
         Assert::count($events, 1);
-        Assert::eq($events[0]->name(), $eventName);
+        Assert::eq($events->first()->name(), $eventName);
     }
 
     /**
@@ -122,7 +124,7 @@ class IntegrationContext implements Context
      */
     public function calendarRepositoryIsEmpty()
     {
-
+        Assert::count($this->calendarRepository->findAll()->toArray(), 0);
     }
 
     /**

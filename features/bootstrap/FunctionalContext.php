@@ -24,7 +24,7 @@ class FunctionalContext extends IntegrationContext
 
     protected function get(string $serviceName) : ?object
     {
-        return $this->kernel->getContainer()->get($serviceName);
+        return $this->kernel->getContainer()->get("test.service_container")->get($serviceName);
     }
 
     public function calendarRepositoryIsEmpty()
